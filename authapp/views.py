@@ -3,15 +3,18 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
+from django.views.generic import View
 
 # Create your views here.
-def show_login(request):
-    is_auth = False
-    if request.user.is_authenticated:
-        is_auth = True
+
+def check_auth(a):
+    if a:
+        return True
     else:
-        is_auth = False
-    return render(request, 'index.html', {'is_auth': is_auth})
+        return False
+
+def show_login(request):
+    return render(request, 'login.html', {'is_auth': check_auth(request.user.is_authenticated)})
 
 def login(request):
     username = request.POST['name']
@@ -19,9 +22,11 @@ def login(request):
     user = authenticate(request, password=password, username=username)
     if user is not None:
         auth_login(request, user)
-        return redirect('/')
+        has_error = "You are successfuly logged in"
+        return render(request, 'login.html', {'is_auth': check_auth(request.user.is_authenticated), 'has_error': has_error})
     else:
-        return redirect('/login')
+        has_error = "Logged in was failed. Check your username and password"
+        return render(request, 'login.html', {'is_auth': check_auth(request.user.is_authenticated), 'has_error': has_error})
 
 def register(request):
     username = request.POST['name']
@@ -31,10 +36,13 @@ def register(request):
     user = authenticate(request, password=password, username=username)
     if user is not None:
         auth_login(request, user)
-        return redirect('/')
+        has_error = "You are successfuly registered"
+        return render(request, 'login.html', {'is_auth': check_auth(request.user.is_authenticated), 'has_error': has_error})
     else:
-        return redirect('/login')
+        has_error = "Registration was failed"
+        return render(request, 'login.html', {'is_auth': check_auth(request.user.is_authenticated), 'has_error': has_error})
 
 def logout(request):
     auth_logout(request)
-    return redirect('/login')
+    has_error = "Successfuly logged out"
+    return render(request, 'login.html', {'is_auth': check_auth(request.user.is_authenticated), 'has_error': has_error})
