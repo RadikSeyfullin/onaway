@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ONAWAY</title>
+  </head>
+  <body>
+    {% if is_auth %}
+      Hi {{ user.get_full_name }}!
+    {% else %}
+      You are not logged in( Please do it now: <a href="{% url 'ShowLoginPage' %}">Login/Register</a>
+    {% endif %}
+  </body>
+</html>

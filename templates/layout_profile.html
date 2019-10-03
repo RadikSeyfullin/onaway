@@ -71,10 +71,10 @@
             <div class="grid_12">
               <div class="dropdown-profile">
                 <div class="dropdown-user">
-                  <img class="avatar-profile" src="../{{ avatar }}" alt="">{{ full_name }}<i class="fa fa-chevron-down" aria-hidden="true"></i>
+                  <img class="avatar-profile" src="../{{ user.avatar }}" alt="">{{ user.get_full_name }}<i class="fa fa-chevron-down" aria-hidden="true"></i>
                 </div>
                 <div class="dropdown-user-content">
-                  {% if request.user.is_staff %}
+                  {% if user.is_staff %}
                   <a href="/admin/"><i class="fa fa-certificate"></i>Админ панель</a><hr style="width: 80%;">
                   {% endif %}
                   <a href="#"><i class="fa fa-pencil-square-o"></i>Редактировать</a>

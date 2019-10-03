@@ -26,7 +26,7 @@
             <div class="grid_8">
                 <div class="visited-courses">
                     <p>Информация обо мне</p>
-                    <p><img src="../{{ avatar }}" alt="{{ user.username }}" style="width:auto;border-radius: 20px; height: 200px;"></p>
+                    <p><img src="../{{ user.avatar }}" alt="{{ user.get_full_name }}" style="width:auto;border-radius: 20px; height: 200px;"></p>
 
                     <!-- <div class="no-courses">
                       <p>Нету посещённых курсов :(</p>
@@ -36,16 +36,12 @@
                     <div class="blue-sq"></div> - незаконченный курс -->
                     <table cellspacing="0">
                       <tr>
-                        <td>Логин</td>
-                        <td>{{ user.username }}</td>
-                      </tr>
-                      <tr>
                         <td>Имя</td>
-                        <td>{{ full_name }}</td>
+                        <td>{{ user.get_full_name }}</td>
                       </tr>
                       <tr>
                         <td>Пол</td>
-                        <td>{% if user.userprofile.sex == 'm' %}<!--<i class="fa fa-male fa-2x" style="height: 31px; min-height: 31px;"></i>-->Мужской{% elif user.userprofile.sex == 'f' %}<!--<i class="fa fa-female fa-2x" style="height: 31px; min-height: 31px;"></i>-->Женский{% endif %}</td>
+                        <td>{{ user.get_sex_display }}</td>
                       </tr>
                       <tr>
                         <td>Email</td>
@@ -53,19 +49,19 @@
                       </tr>
                       <tr>
                         <td>Дата рождения</td>
-                        <td>{{ user.userprofile.birth_date }}</td>
+                        <td>{{ user.birth_date }}</td>
                       </tr>
                       <tr>
                         <td>Проживание</td>
-                        <td>{{ user.userprofile.country }}, {{ user.userprofile.city }}</td>
+                        <td>{{ user.country }}, {{ user.city }}</td>
                       </tr>
                       <tr>
                         <td>Телефонный номер</td>
-                        <td>{{ user.userprofile.phone_number }}</td>
+                        <td>{{ user.phone_number }}</td>
                       </tr>
                       <tr>
                         <td>Веб-страница</td>
-                        <td><a href="{{ user.userprofile.website_url }}">{{ user.userprofile.website_url }}</a></td>
+                        <td><a href="{{ user.website_url }}">{{ user.website_url }}</a></td>
                       </tr>
                     </table>
                 </div>

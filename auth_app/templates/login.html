@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+{% block content %}
+<body>
+	<div id="mainpage">
+		<div class="section">
+			<div class="container" id="regpg">
+				<div class="row">
+					<!--{% if has_error %}
+						<div class="error">
+							{{ has_error }}
+						</div>
+					{% endif %}-->
+					<div class="signup_form">
+						<div class="text-signup">
+							<h1>On A Way</h1>
+							<p>Пушествуй вместе с нами по миру</p>
+						</div>
+						{% if not is_auth %}
+							<div class="signup_view" id="signup_view">
+								<form action="/login/register" method="post">
+
+									{% csrf_token %}
+									<div class="form_email" >
+										<input type="email" name="email" placeholder="Эл. почта" id="signup_email" data-required="required" value="">
+									</div>
+									<div class="form_password">
+										<input type="password" name="password" placeholder="Пароль" id="signup_password" data-required="required">
+									</div>
+									<div class="form_password">
+										<input type="password" name="r_password" placeholder="Повторите пароль" id="signup_password" data-required="required">
+									</div>
+									<div class="form_username">
+										<input type="text" name="name" class="signup_username" placeholder="Имя пользователя в формате (Имя Фамилия)" id="signup_username" maxlength="32" autocorrect="on" autocapitalize="on" value="">
+									</div>
+									<button type="button" name="back" class="reg_go_back" onclick="goback('#login-last-page', '#signup_view')">Назад</button>
+									<input type="submit" name="register" class="reg_log" value="Зарегестрироваться">
+
+								</form>
+							</div>
+							<div class="login_view" id="login_view">
+								<form action="/login/signin" method="post">
+
+									{% csrf_token %}
+									<div class="form_email">
+										<input type="email" name="email" class="login_username" placeholder="Email" id="login_username" maxlength="32" autocorrect="on" autocapitalize="off" value="">
+									</div>
+									<div class="form_password">
+										<input type="password" name="password" placeholder="Пароль" id="login_password" data-required="required">
+									</div>
+									<button type="button" name="back" class="login_go_back" onclick="goback('#reg-last-page', '#login_view')" style="background-color: #fff; color: #529ecc;">Назад</button>
+									<input type="submit" name="login" class="reg_log" value="Войти">
+
+								</form>
+							</div>
+							<div class="reg-or-login">
+								<button type="button" name="button" class="reg-last-page" id="reg-last-page" onclick="look('#signup_view', '#login-last-page', 'reg')">Зарегистрироваться</button>
+								<button type="button" name="button"class="login-last-page" id="login-last-page" onclick="look('#login_view', '#reg-last-page', 'login')" style="background: #FFF; color: #529ecc;border: 1px solid #FFF">Войти</button>
+							</div>
+						{% else %}
+							<h1 style="color:#fff; text-align:center;">Вы уже авторизованы как {{ user.get_full_name }}<br><a href="/login/logout">Выйти?</a></h1>
+
+						{% endif %}
+						<div class="apps">
+							<a class="app-link app-ios" href="https://www.apple.com/ru/ios/app-store/"></a>
+							<a class="app-link app-android" href="https://play.google.com/store?hl=ru"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="temno">
+			</div>
+		</div>
+</div>
+</body>
+{% endblock %}
