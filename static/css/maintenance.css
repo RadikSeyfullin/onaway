@@ -1,0 +1,104 @@
+@import "grid.css";
+@import "../fonts/font-awesome.css";
+@import url(//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900);
+@import url(//fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300);
+@import url(//fonts.googleapis.com/css?family=Raleway:400,100,300,500,700,900);
+
+html {
+  background: url(../images/earth.jpg) no-repeat center center fixed;
+  /*background-position: top;*/
+  background-size: cover;
+  /*background-repeat: no-repeat;*/
+  width: 100%;
+  height: 100%;
+  font-family: "Raleway", "Roboto", sans-serif;
+}
+
+footer {
+  width: 100%;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 20px;
+  color: #FFF;
+  padding: 20px 0 20px 0;
+}
+
+.countdown {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,0);
+  top: 140px;
+  color: #fff;
+}
+
+.title_count > p {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: 60px;
+  font-size: 35px;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+}
+
+.sub_title_count > p {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: 120px;
+  font-size: 35px;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+}
+
+.footer_right > a {
+  display: inline-block;
+  margin: 0 5px 15px 0;
+  border: 2px solid #fff;
+  width: 30px;
+  height: 30px;
+
+}
+
+.footer_right > a:hover {
+  opacity: 0.4;
+}
+
+.social_vk, .social_inst, .social_fb {
+  width: 30px;
+  text-align: center;
+  margin-top: 6px;
+}
+
+@media screen and (max-width: 1200px) {
+  footer {
+    height: 160px;
+  }
+  .footer_right {
+    width: 100%;
+    text-align: center;
+  }
+  .footer_logo {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 545px) {
+  .footer_logo > img {
+    width: 90%;
+  }
+  .countdown {
+    top: 180px;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .countdown {
+    top: 210px;
+  }
+}
