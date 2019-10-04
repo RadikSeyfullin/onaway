@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
     city = models.CharField(null=True, max_length=20)
     phone_number = models.CharField(null=True, max_length=18, unique=True)
     sex = models.CharField(max_length=5, choices=(('man', 'Мужской'),('women','Женский')), default='man')
-    avatar = models.ImageField(upload_to='static/images/users', default='static/images/users/default_logo.png', verbose_name='Аватар')
+    avatar = models.ImageField(upload_to='users', default='static/images/users/default_logo.png', verbose_name='Аватар')
     website_url = models.URLField(max_length=200, null=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

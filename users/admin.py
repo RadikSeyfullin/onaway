@@ -14,11 +14,12 @@ class CustomUserAdmin(UserAdmin):
         ('Permissions', {'fields': ('is_staff', 'is_active')}),
         ('Details', {'fields': ('first_name', 'last_name', 'city', 'country', 'phone_number', 'sex', 'website_url', 'avatar', 'birth_date')}),
         ('Dates', {'fields': ('date_joined', 'last_login')}),
+        ('Group', {'fields': ('groups',)}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2', 'is_staff', 'is_active')}
+            'fields': ('first_name', 'last_name', 'email', 'password1', 'password2', 'is_staff', 'is_active')}
         ),
     )
     search_fields = ('email', 'last_name', 'first_name',)

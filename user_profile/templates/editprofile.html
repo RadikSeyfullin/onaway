@@ -1,0 +1,63 @@
+{% extends 'layout_profile.html' %}
+
+{% block content %}
+{% load static %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form action="" method="post">
+          <div class="form-group">
+            <label for="staticEmail" class="col-md-2 col-form-label">Email</label>
+            <div class="col-md-10">
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ user.email }}">
+            </div>
+          <div class="form-group">
+            <label for="staticFirstName" class="col-md-2 col-form-label">Имя</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control-plaintext" id="staticFirstName" placeholder="{{ user.first_name }}">
+            </div>
+          <div class="form-group">
+            <label for="staticLastName" class="col-md-2 col-form-label">Фамилия</label>
+            <div class="col-md-10">
+              <input type="text" name="form-control-plaintext" id="staticLastName" placeholder="{{ user.last_name }}">
+            </div>
+          <div class="form-group">
+            <label for="staticCity" class="col-md-2 col-form-label">Город</label>
+            <div class="col-md-10">
+              <input type="text" name="form-control-plaintext" id="staticCity" placeholder="{{ user.city }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="staticCountry" class="col-md-2 col-form-label">Страна</label>
+            <div class="col-md-10">
+              <input type="text" name="form-control-plaintext" id="staticCountry" placeholder="{{ user.country }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="staticSite" class="col-md-2 col-form-label">Веб-сайт</label>
+            <div class="col-md-10">
+              <input type="text" name="form-control-plaintext" id="staticSite" placeholder="{{ user.website_url }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Пол</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>{{ user.get_sex_display }}</option>
+              {% if user.sex == 'man' %}
+              <option>Женский</option>
+              {% else %}
+              <option>Мужской</option>
+              {% endif %}
+            </select>
+          </div>
+          <div class="form-group">
+            <img src="/{{ user.avatar }}" alt="{{ user.get_full_name }}" style="width: 250px; height: 250px;">
+            <label for="exampleFormControlFile1">Загрузи аватарку</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
