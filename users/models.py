@@ -9,9 +9,9 @@ class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(_('email address'), unique=True)
     birth_date = models.DateField(null=True, blank=True)
-    country = models.CharField(null=True, max_length=20)
-    city = models.CharField(null=True, max_length=20)
-    phone_number = models.CharField(null=True, max_length=18, unique=True)
+    country = models.CharField(null=True, max_length=20, blank=True)
+    city = models.CharField(null=True, max_length=20, blank=True)
+    phone_number = models.CharField(null=True, max_length=18, unique=True, blank=True)
     sex = models.CharField(max_length=5, choices=(('man', 'Мужской'),('women','Женский')), default='man')
     avatar = models.ImageField(upload_to='users', default='static/images/users/default_logo.png', verbose_name='Аватар')
     website_url = models.URLField(max_length=200, null=True)
